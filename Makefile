@@ -783,6 +783,13 @@ KBUILD_CFLAGS += $(call cc-disable-warning, tautological-compare)
 # See modpost pattern 2
 KBUILD_CFLAGS += $(call cc-option, -mno-global-merge,)
 KBUILD_CFLAGS += $(call cc-option, -fcatch-undefined-behavior)
+KBUILD_CFLAGS += $(call cc-option, -mllvm -polly) \
+                 $(call cc-option, -mllvm -polly-run-dce) \
+                 $(call cc-option, -mllvm -polly-run-inliner) \
+                 $(call cc-option, -mllvm -polly-opt-fusion=max) \
+                 $(call cc-option, -mllvm -polly-ast-use-context) \
+		 $(call cc-option, -mllvm -polly-detect-keep-going) \
+		 $(call cc-option, -mllvm -polly-vectorizer=stripmine)
 
 # Future support for zero initialization is still being debated, see
 # https://bugs.llvm.org/show_bug.cgi?id=45497. These flags are subject to being
