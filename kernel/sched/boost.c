@@ -180,7 +180,6 @@ static void _sched_set_boost(int type)
 				update_freq_aggregate_threshold(
 					freq_aggr_threshold_backup);
 		}
-		break;
 
 	default:
 		WARN_ON(1);
