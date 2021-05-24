@@ -7770,18 +7770,6 @@ static int build_sched_domains(const struct cpumask *cpu_map,
 
 		cpu_attach_domain(sd, d.rd, i);
 	}
-
-	/*
-	* The max_cpu_capacity reflect the original capacity which does not
-	* change dynamically. So update the max cap CPU and its capacity
-	* here.
-	*/
-	if (d.rd->max_cap_orig_cpu != -1) {
-		d.rd->max_cpu_capacity.cpu = d.rd->max_cap_orig_cpu;
-		d.rd->max_cpu_capacity.val = arch_scale_cpu_capacity(NULL,
-						d.rd->max_cap_orig_cpu);
-	}
-
 	rcu_read_unlock();
 
 	ret = 0;
